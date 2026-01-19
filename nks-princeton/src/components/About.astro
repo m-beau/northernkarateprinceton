@@ -1,0 +1,207 @@
+---
+// About section - NKS history, values, and Princeton location intro
+
+const benefits = [
+  { icon: "💪", title: "Physical Fitness", desc: "Build strength, flexibility, and cardiovascular endurance" },
+  { icon: "🧠", title: "Mental Focus", desc: "Improve concentration, discipline, and stress management" },
+  { icon: "🛡️", title: "Self-Defense", desc: "Learn practical skills for personal protection" },
+  { icon: "🎯", title: "Goal Setting", desc: "Progress through belt ranks with clear milestones" },
+  { icon: "🤝", title: "Community", desc: "Join a supportive family of martial artists" },
+  { icon: "⚡", title: "Confidence", desc: "Build self-esteem through achievement and mastery" },
+];
+---
+
+<section id="about" class="about section section-dark">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content">
+        <h2>The NKS <span class="text-red">Tradition</span></h2>
+        <p class="about-lead">
+          For over five decades, Northern Karate Schools has been Canada's premier martial arts organization, 
+          guiding students toward their personal best.
+        </p>
+        <p>
+          Now in Princeton, NJ, we bring that same tradition of excellence to the Garden State. 
+          Our certified black belt instructors combine traditional martial arts wisdom with modern 
+          teaching methods, creating an environment where students of all ages thrive.
+        </p>
+        <p>
+          We're not just teaching kicks and punches — we're building character, confidence, and community. 
+          Whether you're a complete beginner or an experienced martial artist, you'll find your place at NKS Princeton.
+        </p>
+        
+        <div class="about-stats">
+          <div class="stat">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Years of Excellence</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">15</span>
+            <span class="stat-label">Locations</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">10K+</span>
+            <span class="stat-label">Active Students</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="about-image">
+        <!-- Placeholder for dojo image -->
+        <div class="image-placeholder">
+          <span>道場</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="benefits">
+      <h3 class="text-center mb-md">Why Choose NKS Princeton?</h3>
+      <div class="benefits-grid">
+        {benefits.map((benefit) => (
+          <div class="benefit">
+            <span class="benefit-icon">{benefit.icon}</span>
+            <h4>{benefit.title}</h4>
+            <p>{benefit.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    position: relative;
+  }
+  
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+    margin-bottom: var(--space-xl);
+  }
+  
+  .about-content h2 {
+    margin-bottom: var(--space-sm);
+  }
+  
+  .about-lead {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-content p {
+    color: #aaa;
+    margin-bottom: 1rem;
+  }
+  
+  .about-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid #333;
+  }
+  
+  .stat {
+    text-align: center;
+  }
+  
+  .stat-number {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--nks-red);
+    line-height: 1;
+  }
+  
+  .stat-label {
+    font-size: 0.85rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .about-image {
+    position: relative;
+  }
+  
+  .image-placeholder {
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--nks-charcoal) 0%, #222 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #333;
+  }
+  
+  .image-placeholder span {
+    font-size: 6rem;
+    opacity: 0.1;
+    color: white;
+  }
+  
+  .benefits {
+    padding-top: var(--space-lg);
+    border-top: 1px solid #333;
+  }
+  
+  .benefits h3 {
+    color: white;
+  }
+  
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .benefit {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: all var(--transition-normal);
+  }
+  
+  .benefit:hover {
+    background: rgba(196, 18, 48, 0.1);
+    border-color: var(--nks-red);
+  }
+  
+  .benefit-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  
+  .benefit h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+  
+  .benefit p {
+    font-size: 0.85rem;
+    color: #888;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .about-image {
+      order: -1;
+    }
+    
+    .about-stats {
+      justify-content: center;
+    }
+  }
+</style>

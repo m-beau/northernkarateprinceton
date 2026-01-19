@@ -1,0 +1,385 @@
+---
+// Base layout for all pages
+// Includes: Google Fonts, global CSS, meta tags, header/footer
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = "Northern Karate Schools Princeton - Traditional martial arts training for all ages. Learn self-defense, build confidence, and get in the best shape of your life." 
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description}>
+  
+  <!-- Favicon - replace with actual NKS logo -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://northernkarateprinceton.com">
+  
+  <title>{title}</title>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <img src="/images/nks-logo.png" alt="Northern Karate Schools Princeton" class="logo-img">
+        <span class="logo-text">
+          <span class="logo-main">Northern Karate</span>
+          <span class="logo-sub">Princeton</span>
+        </span>
+      </a>
+      
+      <nav class="nav" id="main-nav">
+        <ul class="nav-list">
+          <li><a href="/#programs">Programs</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#schedule">Schedule</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <a href="/#contact" class="btn btn-primary header-cta">Free Trial</a>
+      
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>NKS Princeton</h3>
+          <p>Part of the Northern Karate Schools family. Leaders in martial arts education since 1972.</p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/northernkarate/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/northernkarate" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/#programs">Programs</a></li>
+            <li><a href="/#schedule">Schedule</a></li>
+            <li><a href="/#contact">Contact</a></li>
+            <li><a href="https://northernkarateschools.com" target="_blank">NKS Main Site</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>
+            <!-- Update with actual address -->
+            Princeton, NJ<br>
+            <a href="tel:+16095551234">(609) 555-1234</a><br>
+            <a href="mailto:princeton@northernkarate.com">princeton@northernkarate.com</a>
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; {new Date().getFullYear()} Northern Karate Schools Princeton. Part of <a href="https://northernkarateschools.com" target="_blank">Northern Karate Schools</a>.</p>
+        <p><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Use</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('mobile-toggle');
+    const nav = document.getElementById('main-nav');
+    
+    toggle?.addEventListener('click', () => {
+      nav?.classList.toggle('nav-open');
+      toggle.classList.toggle('active');
+    });
+    
+    // Close menu on link click
+    document.querySelectorAll('.nav-list a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav?.classList.remove('nav-open');
+        toggle?.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>
+
+<style>
+  /* Header */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 0.75rem 0;
+  }
+  
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+  }
+  
+  .logo-img {
+    height: 50px;
+    width: auto;
+  }
+  
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  
+  .logo-main {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  
+  .logo-sub {
+    font-size: 0.75rem;
+    color: var(--nks-red);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+  }
+  
+  .nav-list a {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.5rem 0;
+    position: relative;
+  }
+  
+  .nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--nks-red);
+    transition: width var(--transition-normal);
+  }
+  
+  .nav-list a:hover::after {
+    width: 100%;
+  }
+  
+  .header-cta {
+    padding: 0.625rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  
+  .mobile-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: white;
+    transition: all var(--transition-fast);
+  }
+  
+  .mobile-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .mobile-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+  
+  /* Footer */
+  .footer {
+    background: var(--nks-black);
+    color: white;
+    padding: var(--space-lg) 0 var(--space-md);
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-md);
+  }
+  
+  .footer h3, .footer h4 {
+    margin-bottom: var(--space-sm);
+    color: white;
+  }
+  
+  .footer p {
+    color: #aaa;
+    font-size: 0.95rem;
+  }
+  
+  .footer-social {
+    display: flex;
+    gap: 1rem;
+    margin-top: var(--space-sm);
+  }
+  
+  .footer-social a {
+    color: #aaa;
+    transition: color var(--transition-fast);
+  }
+  
+  .footer-social a:hover {
+    color: var(--nks-red);
+  }
+  
+  .footer-links ul {
+    list-style: none;
+  }
+  
+  .footer-links li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-links a,
+  .footer-contact a {
+    color: #aaa;
+    font-size: 0.95rem;
+  }
+  
+  .footer-links a:hover,
+  .footer-contact a:hover {
+    color: var(--nks-red);
+  }
+  
+  .footer-bottom {
+    padding-top: var(--space-md);
+    border-top: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .footer-bottom p {
+    font-size: 0.85rem;
+    margin: 0;
+  }
+  
+  .footer-bottom a {
+    color: #aaa;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav {
+      position: fixed;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: var(--nks-black);
+      padding: 2rem;
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all var(--transition-normal);
+    }
+    
+    .nav.nav-open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .nav-list {
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+    }
+    
+    .header-cta {
+      display: none;
+    }
+    
+    .mobile-toggle {
+      display: flex;
+    }
+    
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+    
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

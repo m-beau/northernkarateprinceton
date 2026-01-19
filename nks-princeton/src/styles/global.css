@@ -1,0 +1,220 @@
+/* NKS Princeton - Global Styles
+   Matching Northern Karate Schools brand: traditional martial arts aesthetic
+   Red/black/white palette, clean typography, professional feel */
+
+:root {
+  /* Brand colors - derived from NKS main site */
+  --nks-red: #c41230;
+  --nks-red-dark: #9e0f27;
+  --nks-red-light: #e8344f;
+  --nks-black: #1a1a1a;
+  --nks-charcoal: #2d2d2d;
+  --nks-gray: #666666;
+  --nks-gray-light: #f5f5f5;
+  --nks-white: #ffffff;
+  --nks-gold: #d4af37;
+  
+  /* Typography */
+  --font-heading: 'Bebas Neue', 'Impact', sans-serif;
+  --font-body: 'Open Sans', 'Helvetica Neue', sans-serif;
+  
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--nks-black);
+  background: var(--nks-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h4 { font-size: 1.25rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--nks-red);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--nks-red-dark);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.btn-primary {
+  background: var(--nks-red);
+  color: var(--nks-white);
+}
+
+.btn-primary:hover {
+  background: var(--nks-red-dark);
+  color: var(--nks-white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(196, 18, 48, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--nks-white);
+  border: 2px solid var(--nks-white);
+}
+
+.btn-secondary:hover {
+  background: var(--nks-white);
+  color: var(--nks-black);
+}
+
+/* Section styling */
+.section {
+  padding: var(--space-lg) 0;
+}
+
+.section-dark {
+  background: var(--nks-black);
+  color: var(--nks-white);
+}
+
+.section-gray {
+  background: var(--nks-gray-light);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.section-title span {
+  color: var(--nks-red);
+}
+
+/* Cards */
+.card {
+  background: var(--nks-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Form styling */
+input, textarea, select {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--nks-red);
+  box-shadow: 0 0 0 3px rgba(196, 18, 48, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Utility classes */
+.text-center { text-align: center; }
+.text-red { color: var(--nks-red); }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+/* Japanese decorative element - subtle kanji accent */
+.kanji-accent::before {
+  content: '空手';
+  font-size: 8rem;
+  font-weight: 700;
+  position: absolute;
+  opacity: 0.03;
+  color: var(--nks-black);
+  pointer-events: none;
+}

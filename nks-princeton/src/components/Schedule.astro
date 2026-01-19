@@ -1,0 +1,164 @@
+---
+// Schedule section - class times
+// You'll want to update these with actual class times
+
+const schedule = [
+  { day: "Monday", classes: [
+    { time: "4:00 PM", name: "Little Dragons", age: "3-6" },
+    { time: "5:00 PM", name: "Youth Karate", age: "7-12" },
+    { time: "6:30 PM", name: "Teen & Adult", age: "13+" },
+  ]},
+  { day: "Tuesday", classes: [
+    { time: "4:30 PM", name: "Youth Karate", age: "7-12" },
+    { time: "6:00 PM", name: "Teen & Adult", age: "13+" },
+    { time: "7:30 PM", name: "Advanced Training", age: "Brown+" },
+  ]},
+  { day: "Wednesday", classes: [
+    { time: "4:00 PM", name: "Little Dragons", age: "3-6" },
+    { time: "5:00 PM", name: "Youth Karate", age: "7-12" },
+    { time: "6:30 PM", name: "Teen & Adult", age: "13+" },
+  ]},
+  { day: "Thursday", classes: [
+    { time: "4:30 PM", name: "Youth Karate", age: "7-12" },
+    { time: "6:00 PM", name: "Teen & Adult", age: "13+" },
+    { time: "7:30 PM", name: "Sparring Class", age: "All Levels" },
+  ]},
+  { day: "Friday", classes: [
+    { time: "4:00 PM", name: "Little Dragons", age: "3-6" },
+    { time: "5:00 PM", name: "Family Class", age: "All Ages" },
+  ]},
+  { day: "Saturday", classes: [
+    { time: "9:00 AM", name: "Youth Karate", age: "7-12" },
+    { time: "10:30 AM", name: "Teen & Adult", age: "13+" },
+    { time: "12:00 PM", name: "Open Training", age: "All Levels" },
+  ]},
+];
+---
+
+<section id="schedule" class="schedule section">
+  <div class="container">
+    <h2 class="section-title">Class <span>Schedule</span></h2>
+    <p class="schedule-intro">
+      We offer flexible scheduling with morning, afternoon, and evening classes throughout the week. 
+      Find a time that works for you.
+    </p>
+    
+    <div class="schedule-grid">
+      {schedule.map((day) => (
+        <div class="schedule-day">
+          <h3 class="day-name">{day.day}</h3>
+          <ul class="day-classes">
+            {day.classes.map((cls) => (
+              <li class="class-item">
+                <span class="class-time">{cls.time}</span>
+                <span class="class-info">
+                  <span class="class-name">{cls.name}</span>
+                  <span class="class-age">{cls.age}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    
+    <div class="schedule-note">
+      <p>
+        <strong>Note:</strong> Schedule subject to change. Contact us for the most current class times. 
+        <a href="#contact">Book your free trial class →</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .schedule-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
+    color: var(--nks-gray);
+  }
+  
+  .schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .schedule-day {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+  
+  .day-name {
+    background: var(--nks-black);
+    color: white;
+    padding: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .day-classes {
+    list-style: none;
+    padding: 0.5rem;
+  }
+  
+  .class-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 6px;
+    transition: background var(--transition-fast);
+  }
+  
+  .class-item:hover {
+    background: var(--nks-gray-light);
+  }
+  
+  .class-time {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    color: var(--nks-red);
+    min-width: 70px;
+  }
+  
+  .class-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+  
+  .class-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  .class-age {
+    font-size: 0.75rem;
+    color: var(--nks-gray);
+  }
+  
+  .schedule-note {
+    margin-top: var(--space-md);
+    text-align: center;
+    padding: 1rem;
+    background: rgba(196, 18, 48, 0.05);
+    border-radius: 8px;
+  }
+  
+  .schedule-note p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--nks-charcoal);
+  }
+  
+  @media (max-width: 640px) {
+    .schedule-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

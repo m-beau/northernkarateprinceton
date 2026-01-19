@@ -1,0 +1,263 @@
+---
+// Contact section with trial signup form
+// Form action - you'll need to connect this to a backend (Formspree, Netlify Forms, etc.)
+---
+
+<section id="contact" class="contact section section-dark">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Start Your <span class="text-red">Journey</span></h2>
+        <p class="contact-lead">
+          Ready to experience the NKS difference? Sign up for your free trial class and discover 
+          what martial arts can do for you and your family.
+        </p>
+        
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <div>
+              <strong>Location</strong>
+              <!-- Update with actual address -->
+              <p>123 Main Street<br>Princeton, NJ 08540</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <div>
+              <strong>Phone</strong>
+              <p><a href="tel:+16095551234">(609) 555-1234</a></p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <div>
+              <strong>Email</strong>
+              <p><a href="mailto:princeton@northernkarate.com">princeton@northernkarate.com</a></p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <span class="contact-icon">🕐</span>
+            <div>
+              <strong>Hours</strong>
+              <p>Mon-Fri: 4pm - 9pm<br>Sat: 9am - 1pm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form-wrapper">
+        <div class="form-header">
+          <h3>Claim Your Free Trial Class</h3>
+          <p>Fill out the form below to get started</p>
+        </div>
+        
+        <!-- 
+          FORM INTEGRATION OPTIONS:
+          1. Formspree: action="https://formspree.io/f/YOUR_ID"
+          2. Netlify Forms: add netlify attribute to form
+          3. Custom backend: update action to your endpoint
+        -->
+        <form 
+          class="contact-form" 
+          action="https://formspree.io/f/YOUR_FORM_ID" 
+          method="POST"
+        >
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          
+          <div class="form-group">
+            <label for="program">Interested Program</label>
+            <select id="program" name="program">
+              <option value="">Select a program...</option>
+              <option value="little-dragons">Little Dragons (3-6)</option>
+              <option value="youth">Youth Program (7-12)</option>
+              <option value="teen-adult">Teen & Adult (13+)</option>
+              <option value="family">Family Classes</option>
+              <option value="unsure">Not sure yet</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="3" placeholder="Any questions or additional information..."></textarea>
+          </div>
+          
+          <div class="form-group form-checkbox">
+            <input type="checkbox" id="privacy" name="privacy" required>
+            <label for="privacy">
+              I agree to the <a href="/privacy" target="_blank">Privacy Policy</a>
+            </label>
+          </div>
+          
+          <button type="submit" class="btn btn-primary btn-full">
+            Get Started
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+  
+  .contact-info h2 {
+    margin-bottom: var(--space-sm);
+  }
+  
+  .contact-lead {
+    font-size: 1.1rem;
+    color: #aaa;
+    margin-bottom: var(--space-md);
+  }
+  
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .contact-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .contact-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  
+  .contact-item strong {
+    display: block;
+    color: white;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .contact-item p {
+    margin: 0;
+    color: #aaa;
+    font-size: 0.95rem;
+  }
+  
+  .contact-item a {
+    color: #aaa;
+  }
+  
+  .contact-item a:hover {
+    color: var(--nks-red);
+  }
+  
+  .contact-form-wrapper {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .form-header {
+    background: var(--nks-red);
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .form-header h3 {
+    color: white;
+    margin: 0 0 0.25rem;
+    font-size: 1.5rem;
+  }
+  
+  .form-header p {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  
+  .contact-form {
+    padding: 1.5rem;
+    color: var(--nks-black);
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    color: var(--nks-charcoal);
+  }
+  
+  .form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .form-checkbox input {
+    width: auto;
+  }
+  
+  .form-checkbox label {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 400;
+  }
+  
+  .btn-full {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,133 @@
+---
+// Testimonials section
+// Update these with real testimonials as you collect them
+
+const testimonials = [
+  {
+    quote: "NKS has been transformative for our whole family. The instructors are patient, professional, and truly care about each student's development.",
+    author: "Sarah M.",
+    role: "Parent of two students",
+    stars: 5
+  },
+  {
+    quote: "I started as a complete beginner at 35, and the supportive environment made all the difference. I'm now more confident and in the best shape of my life.",
+    author: "David L.",
+    role: "Adult student",
+    stars: 5
+  },
+  {
+    quote: "My son struggled with focus and discipline. After six months at NKS, his teachers at school noticed a remarkable improvement. Worth every penny.",
+    author: "Jennifer K.",
+    role: "Parent",
+    stars: 5
+  }
+];
+---
+
+<section class="testimonials section">
+  <div class="container">
+    <h2 class="section-title">What Our <span>Students Say</span></h2>
+    
+    <div class="testimonials-grid">
+      {testimonials.map((t) => (
+        <div class="testimonial-card">
+          <div class="stars">
+            {Array(t.stars).fill(null).map(() => (
+              <span class="star">★</span>
+            ))}
+          </div>
+          <blockquote class="testimonial-quote">
+            "{t.quote}"
+          </blockquote>
+          <div class="testimonial-author">
+            <strong>{t.author}</strong>
+            <span>{t.role}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="testimonials-cta">
+      <p>Join thousands of satisfied students across the NKS family</p>
+      <a href="#contact" class="btn btn-primary">Start Your Journey</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    background: var(--nks-gray-light);
+  }
+  
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: var(--space-lg);
+  }
+  
+  .testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    position: relative;
+  }
+  
+  .testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 4rem;
+    font-family: Georgia, serif;
+    color: var(--nks-red);
+    opacity: 0.1;
+    line-height: 1;
+  }
+  
+  .stars {
+    margin-bottom: 1rem;
+  }
+  
+  .star {
+    color: var(--nks-gold);
+    font-size: 1.1rem;
+  }
+  
+  .testimonial-quote {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--nks-charcoal);
+    line-height: 1.7;
+    margin: 0 0 1.5rem;
+    border: none;
+    padding: 0;
+  }
+  
+  .testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+  
+  .testimonial-author strong {
+    color: var(--nks-black);
+  }
+  
+  .testimonial-author span {
+    font-size: 0.85rem;
+    color: var(--nks-gray);
+  }
+  
+  .testimonials-cta {
+    text-align: center;
+    padding-top: var(--space-md);
+    border-top: 1px solid #ddd;
+  }
+  
+  .testimonials-cta p {
+    color: var(--nks-gray);
+    margin-bottom: var(--space-sm);
+  }
+</style>

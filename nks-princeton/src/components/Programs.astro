@@ -1,0 +1,195 @@
+---
+// Programs section - showcases available martial arts programs
+// Matches NKS structure: Novice, Black Belt, Masters programs
+
+const programs = [
+  {
+    title: "Little Dragons",
+    age: "Ages 3-6",
+    description: "Fun, age-appropriate introduction to martial arts. Develops coordination, focus, and social skills through engaging activities.",
+    features: ["Motor skill development", "Discipline fundamentals", "Fun learning environment"],
+    color: "#f59e0b"
+  },
+  {
+    title: "Youth Program",
+    age: "Ages 7-12",
+    description: "Build confidence, discipline, and physical fitness. Our youth program develops well-rounded martial artists and leaders.",
+    features: ["Self-defense skills", "Character development", "Anti-bullying training"],
+    color: "#3b82f6"
+  },
+  {
+    title: "Teen & Adult",
+    age: "Ages 13+",
+    description: "Comprehensive karate training for teens and adults. Get fit, learn practical self-defense, and join a supportive community.",
+    features: ["Complete curriculum", "Stress relief", "Flexible scheduling"],
+    color: "#c41230"
+  },
+  {
+    title: "Family Classes",
+    age: "All Ages",
+    description: "Train together as a family. Build bonds while learning martial arts side by side with your loved ones.",
+    features: ["Quality family time", "Shared goals", "Multi-generational"],
+    color: "#10b981"
+  }
+];
+---
+
+<section id="programs" class="programs section">
+  <div class="container">
+    <h2 class="section-title">Our <span>Programs</span></h2>
+    <p class="programs-intro">
+      Northern Karate Schools offers comprehensive martial arts training for all ages and skill levels. 
+      Whether you're looking to build confidence, get in shape, or master self-defense, we have a program for you.
+    </p>
+    
+    <div class="programs-grid">
+      {programs.map((program) => (
+        <div class="program-card">
+          <div class="program-header" style={`--accent-color: ${program.color}`}>
+            <span class="program-age">{program.age}</span>
+            <h3 class="program-title">{program.title}</h3>
+          </div>
+          <div class="program-body">
+            <p>{program.description}</p>
+            <ul class="program-features">
+              {program.features.map((feature) => (
+                <li>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <a href="#contact" class="program-cta">Learn More →</a>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="programs-note">
+      <p><strong>Body, Mind & Spirit</strong> — NKS training develops strength, flexibility, and cardiovascular fitness while challenging your mind and nurturing personal growth.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .programs {
+    background: var(--nks-gray-light);
+  }
+  
+  .programs-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--space-lg);
+    color: var(--nks-gray);
+    font-size: 1.1rem;
+  }
+  
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .program-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+  
+  .program-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .program-header {
+    background: var(--nks-black);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .program-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-color);
+  }
+  
+  .program-age {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .program-title {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .program-body {
+    padding: 1.5rem;
+  }
+  
+  .program-body p {
+    color: var(--nks-gray);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+  
+  .program-features {
+    list-style: none;
+    margin-bottom: 1.5rem;
+  }
+  
+  .program-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--nks-charcoal);
+    margin-bottom: 0.5rem;
+  }
+  
+  .program-features svg {
+    color: var(--nks-red);
+    flex-shrink: 0;
+  }
+  
+  .program-cta {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--nks-red);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: gap var(--transition-fast);
+  }
+  
+  .program-cta:hover {
+    gap: 0.5rem;
+  }
+  
+  .programs-note {
+    margin-top: var(--space-lg);
+    padding: 1.5rem 2rem;
+    background: white;
+    border-left: 4px solid var(--nks-red);
+    border-radius: 0 8px 8px 0;
+  }
+  
+  .programs-note p {
+    margin: 0;
+    color: var(--nks-charcoal);
+  }
+</style>
