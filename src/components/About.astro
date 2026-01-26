@@ -155,7 +155,7 @@ const benefits = [
   
   .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     gap: 1.5rem;
   }
   
@@ -195,13 +195,17 @@ const benefits = [
     .about-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .about-image {
       order: -1;
     }
-    
+
     .about-stats {
       justify-content: center;
+    }
+
+    .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
