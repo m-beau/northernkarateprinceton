@@ -3,6 +3,9 @@
 // Form action - you'll need to connect this to a backend (Formspree, Netlify Forms, etc.)
 ---
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
 <section id="contact" class="contact section section-dark">
   <div class="container">
     <div class="contact-grid">
@@ -46,6 +49,10 @@
               <p>Mon, Thu: 5:45pm - 7:45pm<br>Sat: 10am - 12pm</p>
             </div>
           </div>
+        </div>
+
+        <div class="map-container">
+          <div id="map" class="map"></div>
         </div>
       </div>
       
@@ -176,7 +183,20 @@
   .contact-item a:hover {
     color: var(--nks-red);
   }
-  
+
+  .map-container {
+    margin-top: var(--space-md);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .map {
+    width: 100%;
+    height: 300px;
+  }
+
   .contact-form-wrapper {
     background: white;
     border-radius: 12px;
@@ -254,9 +274,40 @@
     .contact-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .form-row {
       grid-template-columns: 1fr;
     }
   }
 </style>
+
+<script is:inline>
+  // Initialize Leaflet map with OpenStreetMap
+  window.addEventListener('DOMContentLoaded', () => {
+    // Initialize map
+    const map = L.map('map', {
+      center: [40.35372551055585, -74.66152567066351], // 124 Witherspoon St, Princeton, NJ
+      zoom: 15,
+      zoomControl: true
+    });
+
+    // Add standard OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Create custom red marker icon
+    const redIcon = L.divIcon({
+      className: 'custom-marker',
+      html: '<div style="background-color: #C41230; width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
+      iconSize: [30, 30],
+      iconAnchor: [15, 30]
+    });
+
+    // Add marker
+    L.marker([40.35372551055585, -74.66152567066351], { icon: redIcon })
+      .addTo(map)
+      .bindPopup('<strong>Northern Karate Schools Princeton</strong><br>Witherspoon Street Presbyterian Church<br>124 Witherspoon St<br>Princeton, NJ 08540');
+  });
+</script>
