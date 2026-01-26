@@ -22,7 +22,7 @@
             <div>
               <strong>Location</strong>
               <!-- Update with actual address -->
-              <p>Witherspoon Street Presbyterian Church<br>124 Witherspoon St<br>Princeton, NJ 08540</p>
+              <p>Witherspoon Street Presbyterian Church<br>124 Witherspoon St<br>Princeton, NJ 08540<br>Entrance on Quarry Street</p>
             </div>
           </div>
           
@@ -286,7 +286,7 @@
   window.addEventListener('DOMContentLoaded', () => {
     // Initialize map
     const map = L.map('map', {
-      center: [40.35372551055585, -74.66152567066351], // 124 Witherspoon St, Princeton, NJ
+      center: [40.35309310150687, -74.66155616184281], // 124 Witherspoon St, Princeton, NJ
       zoom: 15,
       zoomControl: true
     });
@@ -335,7 +335,7 @@
     });
 
     // Add marker
-    L.marker([40.35372551055585, -74.66152567066351], { icon: nksIcon })
+    L.marker([40.35309310150687, -74.66155616184281], { icon: nksIcon })
       .addTo(map)
       .bindPopup('<strong>Northern Karate Schools Princeton</strong><br>Witherspoon Street Presbyterian Church<br>124 Witherspoon St<br>Princeton, NJ 08540');
   });

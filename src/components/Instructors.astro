@@ -1,0 +1,275 @@
+---
+// Instructors section with rotating banner
+
+const instructors = [
+  {
+    name: "Hart Hillman",
+    image: "/images/silouhette2.jpg",
+    title: "Black Belt xx Dan",
+    subtitle: "30 years experience"
+  },
+  {
+    name: "Maxime Beau",
+    image: "/images/silouhette2.jpg",
+    title: "Black Belt 2nd Dan",
+    subtitle: "16 years experience"
+  }
+];
+---
+
+<section id="instructors" class="instructors section">
+  <div class="container">
+    <h2 class="text-center">Meet Your <span class="text-red">Instructors</span></h2>
+    <p class="section-intro text-center">
+      Our certified black belt instructors bring decades of experience and passion to every class.
+    </p>
+
+    <div class="instructor-carousel">
+      <div class="carousel-track">
+        {instructors.map((instructor, index) => (
+          <div class="instructor-slide" data-index={index}>
+            <div class="instructor-image-wrapper">
+              <img src={instructor.image} alt={instructor.name} class="instructor-image" />
+              <div class="instructor-overlay">
+                <h3 class="instructor-name">{instructor.name}</h3>
+                <p class="instructor-title">{instructor.title}</p>
+                <p class="instructor-subtitle">{instructor.subtitle}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn prev" aria-label="Previous instructor">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <div class="carousel-dots"></div>
+        <button class="carousel-btn next" aria-label="Next instructor">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .instructors {
+    background: var(--nks-charcoal);
+  }
+
+  .section-intro {
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
+    color: #aaa;
+    font-size: 1.1rem;
+  }
+
+  .instructor-carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .carousel-track {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .instructor-slide {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .instructor-slide.active {
+    display: block;
+    opacity: 1;
+  }
+
+  .instructor-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, var(--nks-charcoal) 0%, #222 100%);
+    overflow: hidden;
+  }
+
+  .instructor-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    opacity: 0.8;
+  }
+
+  .instructor-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-md);
+  }
+
+  .instructor-name {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: white;
+    margin: 0 0 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  }
+
+  .instructor-title {
+    font-size: 1.25rem;
+    color: var(--nks-red);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+
+  .instructor-subtitle {
+    font-size: 1.25rem;
+    color: white;
+    margin: 0;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+
+  .carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: var(--space-md);
+  }
+
+  .carousel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+  }
+
+  .carousel-btn:hover {
+    background: var(--nks-red);
+    border-color: var(--nks-red);
+    transform: scale(1.1);
+  }
+
+  .carousel-dots {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: none;
+    padding: 0;
+  }
+
+  .carousel-dot.active {
+    background: var(--nks-red);
+    transform: scale(1.3);
+  }
+
+  @media (max-width: 768px) {
+    .instructor-name {
+      font-size: 2rem;
+    }
+
+    .instructor-title {
+      font-size: 1rem;
+    }
+
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+    }
+  }
+</style>
+
+<script>
+  // Carousel functionality
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.instructor-slide');
+  const dotsContainer = document.querySelector('.carousel-dots');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+
+  // Create dots
+  slides.forEach((_, index) => {
+    const dot = document.createElement('button');
+    dot.classList.add('carousel-dot');
+    dot.setAttribute('aria-label', `Go to instructor ${index + 1}`);
+    if (index === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => goToSlide(index));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll('.carousel-dot');
+
+  function updateCarousel() {
+    slides.forEach((slide, index) => {
+      slide.classList.toggle('active', index === currentSlide);
+    });
+    dots.forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentSlide);
+    });
+  }
+
+  function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateCarousel();
+  }
+
+  prevBtn?.addEventListener('click', prevSlide);
+  nextBtn?.addEventListener('click', nextSlide);
+
+  // Auto-rotate every 5 seconds
+  setInterval(nextSlide, 5000);
+
+  // Initialize first slide
+  updateCarousel();
+</script>
