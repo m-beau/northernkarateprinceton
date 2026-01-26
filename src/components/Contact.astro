@@ -297,16 +297,45 @@
       maxZoom: 19
     }).addTo(map);
 
-    // Create custom red marker icon
-    const redIcon = L.divIcon({
+    // Create custom marker with NKS logo
+    const nksIcon = L.divIcon({
       className: 'custom-marker',
-      html: '<div style="background-color: #C41230; width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>',
-      iconSize: [30, 30],
-      iconAnchor: [15, 30]
+      html: `
+        <div style="position: relative; width: 50px; height: 50px;">
+          <div style="
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: #FFD700;
+            border-radius: 50% 50% 50% 0;
+            transform: translateX(-50%) rotate(-45deg);
+            border: 3px solid #000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+          "></div>
+          <img src="/NKS-logo.png"
+               style="
+                 position: absolute;
+                 bottom: 3px;
+                 left: 50%;
+                 transform: translateX(-50%);
+                 width: 44px;
+                 height: 44px;
+                 border-radius: 50%;
+                 z-index: 1;
+               "
+               alt="NKS Location">
+        </div>
+      `,
+      iconSize: [50, 50],
+      iconAnchor: [25, 50],
+      popupAnchor: [0, -50]
     });
 
     // Add marker
-    L.marker([40.35372551055585, -74.66152567066351], { icon: redIcon })
+    L.marker([40.35372551055585, -74.66152567066351], { icon: nksIcon })
       .addTo(map)
       .bindPopup('<strong>Northern Karate Schools Princeton</strong><br>Witherspoon Street Presbyterian Church<br>124 Witherspoon St<br>Princeton, NJ 08540');
   });
