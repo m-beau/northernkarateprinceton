@@ -4,24 +4,43 @@
 
 const programs = [
   {
-    title: "Junior Classes",
-    age: "Ages 6-12",
-    description: "Build confidence, discipline, and physical fitness. Our youth program develops well-rounded martial artists and leaders.",
-    features: ["Motor skill development", "Discipline fundamentals", "Character development"],
+    title: "NOVICE PROGRAM",
+    subtitle: "New to karate?",
+    description: "Build confidence, discipline, and physical fitness. Get fit, learn practical self-defense, and join a supportive community. Beginners get and stay in shape, while enjoying a variety of benefits:",
+    features: ["Monthly assessments",
+    "Included belts + exams",
+    "Training manual and NKS crest",
+    "Motor skill development",
+    "Discipline fundamentals",
+    "Character development",
+    "Stress relief",
+    "Self-defense skills",
+    "Cardio, Fitness, Flexibility",
+    "Confidence building",
+    "Discounts for family & friends (10%)",
+],
     color: "#3b82f6"
   },
   {
-    title: "All levels",
-    age: "Ages 6+",
-    description: "Comprehensive karate training for teens and adults. Get fit, learn practical self-defense, and join a supportive community.",
-    features: ["Cardio, Fitness, Flexibility", "Confidence building", "Stress relief", "Self-defense skills"],
+    title: "BLACK BELT PROGRAM",
+    subtitle: "Black Belt Excellence.",
+    description: "Progress through the ranks in a welcoming community fostering excellence. Learn, and learn to teach.",
+    features: ["Official uniform and crest",
+            "Seminars, workshops and special events featuring NKS + guest teachers",
+            "Semi-private intermediate refresher classes (4/per year)",
+            "Monthly assessments",
+            "Included belts + exams",
+            "Discounts on equipment and camp tuition (15%)"],
     color: "#c41230"
   },
   {
-    title: "Advanced Classes",
-    age: "Ages 13+",
-    description: "Advanced practice for brown and black belts. Advanced Katas, Kumite techniques and Kobudo weapon training.",
-    features: ["Quality family time", "Shared goals", "Multi-generational"],
+    title: "MASTERS PROGRAM",
+    subtitle: "The journey is the reward.",
+    description: "A black belt is just the beginning.",
+    features: ["Complete training equipment package",
+    "Semi-private advanced refresher classes (8/per year)",
+    "Black Belts + Certificates",
+    "Maximum discount on equipment and camp tuition (20%)"],
     color: "#10b981"
   }
 ];
@@ -31,15 +50,15 @@ const programs = [
   <div class="container">
     <h2 class="section-title">Our <span>Programs</span></h2>
     <p class="programs-intro">
-      Northern Karate Schools offers comprehensive martial arts training for all ages and skill levels. 
-      Whether you're looking to build confidence, get in shape, or master self-defense, we have a program for you.
+      Northern Karate Schools Princeton offers comprehensive martial arts and self-defence training for all ages and skill levels. 
+      Karate helps you develop your confidence, get in shape, and builds character.
     </p>
     
     <div class="programs-grid">
       {programs.map((program) => (
         <div class="program-card">
           <div class="program-header" style={`--accent-color: ${program.color}`}>
-            <span class="program-age">{program.age}</span>
+            <span class="program-age">{program.subtitle}</span>
             <h3 class="program-title">{program.title}</h3>
           </div>
           <div class="program-body">

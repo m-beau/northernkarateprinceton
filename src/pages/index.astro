@@ -10,9 +10,25 @@ import Instructors from '../components/Instructors.astro';
 import Schedule from '../components/Schedule.astro';
 import Testimonials from '../components/Testimonials.astro';
 import Contact from '../components/Contact.astro';
+
+// Check if form was submitted
+const url = new URL(Astro.request.url);
+const submitted = url.searchParams.get('submitted');
 ---
 
 <Layout title="Northern Karate Schools Princeton | Martial Arts Classes for All Ages">
+  {submitted === 'true' && (
+    <div class="success-banner">
+      <div class="success-content">
+        <span class="success-icon">✓</span>
+        <div>
+          <strong>Thank you for your interest!</strong>
+          <p>We've received your trial class request and will contact you shortly.</p>
+        </div>
+        <button class="close-banner" onclick="this.parentElement.parentElement.remove()">×</button>
+      </div>
+    </div>
+  )}
   <Hero />
   <Programs />
   <About />
@@ -21,3 +37,102 @@ import Contact from '../components/Contact.astro';
   <Testimonials />
   <Contact />
 </Layout>
+
+<style>
+  .success-banner {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 600px;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  .success-content {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .success-icon {
+    font-size: 2rem;
+    background: rgba(255, 255, 255, 0.2);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .success-content strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .success-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.95;
+  }
+
+  .close-banner {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    line-height: 1;
+  }
+
+  .close-banner:hover {
+    opacity: 1;
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateX(-50%) translateY(-100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .success-banner {
+      top: 70px;
+      width: 95%;
+    }
+
+    .success-content {
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .success-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+    }
+  }
+</style>

@@ -62,15 +62,9 @@
           <p>Fill out the form below to get started</p>
         </div>
         
-        <!-- 
-          FORM INTEGRATION OPTIONS:
-          1. Formspree: action="https://formspree.io/f/YOUR_ID"
-          2. Netlify Forms: add netlify attribute to form
-          3. Custom backend: update action to your endpoint
-        -->
-        <form 
-          class="contact-form" 
-          action="https://formspree.io/f/YOUR_FORM_ID" 
+        <form
+          class="contact-form"
+          action="/api/contact"
           method="POST"
         >
           <div class="form-row">

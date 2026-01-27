@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+
+# Environment variables (NEVER commit these!)
+.env
+.dev.vars
+.env.local
+.env.production
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+
+# Wrangler
+.wrangler/

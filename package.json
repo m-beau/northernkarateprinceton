@@ -4,10 +4,14 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
+    "dev:wrangler": "astro build && wrangler pages dev dist --compatibility-date=2024-01-01",
     "build": "astro build",
     "preview": "astro preview"
   },
   "dependencies": {
     "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.60.0"
   }
 }
