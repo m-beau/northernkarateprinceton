@@ -9,7 +9,7 @@ const instructors = [
     subtitle: "Black Belt 4th Dan<br>30 years experience"
   },
   {
-    name: "Maxime Beau",
+    name: "<a href='https://m-beau.github.io' target='_blank' style='color: white;'>Maxime Beau</a>",
     image: "/images/MaximeBeau.jpg",
     title: "Northern Karate Princeton Senior Instructor",
     subtitle: "Black Belt 2nd Dan<br>16 years experience"
@@ -42,7 +42,7 @@ const instructors = [
           <div class="instructor-image-wrapper">
             <img src={instructor.image} alt={instructor.name} class="instructor-image" />
             <div class="instructor-overlay">
-              <h3 class="instructor-name">{instructor.name}</h3>
+              <h3 class="instructor-name" set:html={instructor.name}></h3>
               <p class="instructor-title">{instructor.title}</p>
               <p class="instructor-subtitle" set:html={instructor.subtitle}></p>
             </div>
