@@ -2,12 +2,36 @@
 // About section - NKS history, values, and Princeton location intro
 
 const benefits = [
-  { icon: "💪", title: "Physical Fitness", desc: "Build strength, flexibility, and cardiovascular endurance" },
-  { icon: "🧠", title: "Mental Focus", desc: "Improve concentration, discipline, and stress management" },
-  { icon: "🛡️", title: "Self-Defense", desc: "Learn practical skills for personal protection" },
-  { icon: "🎯", title: "Goal Setting", desc: "Progress through belt ranks with clear milestones" },
-  { icon: "🤝", title: "Community", desc: "Join a supportive family of martial artists" },
-  { icon: "⚡", title: "Confidence", desc: "Build self-esteem through achievement and mastery" },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.4 14.4 9.6 9.6"/><path d="M18.657 21.485a2 2 0 1 1-2.829-2.828l-1.767 1.768a2 2 0 1 1-2.829-2.829l6.364-6.364a2 2 0 1 1 2.829 2.829l-1.768 1.767a2 2 0 1 1 2.828 2.829z"/><path d="m21.5 21.5-1.4-1.4"/><path d="M3.9 3.9 2.5 2.5"/><path d="M6.404 12.768a2 2 0 1 1-2.829-2.829l1.768-1.767a2 2 0 1 1-2.828-2.829l2.828-2.828a2 2 0 1 1 2.829 2.828l1.767-1.768a2 2 0 1 1 2.829 2.829z"/></svg>',
+    title: "Physical Fitness",
+    desc: "Build strength, flexibility, and cardiovascular endurance"
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M9 13a4.5 4.5 0 0 0 3-4"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M12 13h4"/><path d="M12 18h6a2 2 0 0 1 2 2v1"/><path d="M12 8h8"/><path d="M16 8V5a2 2 0 0 1 2-2"/><circle cx="16" cy="13" r=".5"/><circle cx="18" cy="3" r=".5"/><circle cx="20" cy="21" r=".5"/><circle cx="20" cy="8" r=".5"/></svg>',
+    title: "Mental Focus",
+    desc: "Improve concentration, discipline, and stress management"
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>',
+    title: "Self-Defense",
+    desc: "Learn practical skills for personal protection"
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+    title: "Goal Setting",
+    desc: "Progress through belt ranks with clear milestones"
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+    title: "Community",
+    desc: "Join a supportive family of martial artists"
+  },
+  {
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>',
+    title: "Confidence",
+    desc: "Build self-esteem through achievement and mastery"
+  },
 ];
 ---
 
@@ -59,7 +83,7 @@ const benefits = [
       <div class="benefits-grid">
         {benefits.map((benefit) => (
           <div class="benefit">
-            <span class="benefit-icon">{benefit.icon}</span>
+            <span class="benefit-icon" set:html={benefit.icon}></span>
             <h4>{benefit.title}</h4>
             <p>{benefit.desc}</p>
           </div>
@@ -168,9 +192,19 @@ const benefits = [
   }
   
   .benefit-icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 0.75rem;
+    color: #fbbf24;
+  }
+
+  .benefit-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke-width: 1.5;
   }
   
   .benefit h4 {
