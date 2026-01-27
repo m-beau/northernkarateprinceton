@@ -11,19 +11,19 @@ const instructors = [
   {
     name: "Maxime Beau",
     image: "/images/MaximeBeau.jpg",
-    title: "Northern Karate Princeton Assistant Instructor",
+    title: "Northern Karate Princeton Senior Instructor",
     subtitle: "Black Belt 2nd Dan - 16 years experience"
   },
   {
     name: "Thithikshan Devadoss",
     image: "/images/silouhette2.jpg",
-    title: "Junior Instructor",
+    title: "Northern Karate Princeton Junior Instructor",
     subtitle: "Black Belt 2nd Dan"
   },
   {
     name: "Chanasya Devadoss",
     image: "/images/silouhette2.jpg",
-    title: "Junior Instructor",
+    title: "Northern Karate Princeton Junior Instructor",
     subtitle: "Black Belt 3rd Dan"
   }
 ];
@@ -96,7 +96,7 @@ const instructors = [
   .instructor-slide {
     display: none;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 1.5s ease-in-out;
   }
 
   .instructor-slide.active {
@@ -117,7 +117,7 @@ const instructors = [
     height: 100%;
     object-fit: contain;
     object-position: center;
-    opacity: 0.8;
+    opacity: 1;
   }
 
   .instructor-overlay {
@@ -128,13 +128,13 @@ const instructors = [
     bottom: 0;
     background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 0.3) 50%,
-      rgba(0, 0, 0, 0.7) 100%
+      rgba(0, 0, 0, 0.9) 100%
     );
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     text-align: center;
     padding: var(--space-md);
@@ -279,8 +279,8 @@ const instructors = [
   prevBtn?.addEventListener('click', prevSlide);
   nextBtn?.addEventListener('click', nextSlide);
 
-  // Auto-rotate every 5 seconds
-  setInterval(nextSlide, 5000);
+  // Auto-rotate every 8 seconds
+  setInterval(nextSlide, 8000);
 
   // Initialize first slide
   updateCarousel();
