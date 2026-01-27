@@ -1,5 +1,5 @@
 ---
-// Instructors section with rotating banner
+// Instructors section with static grid layout
 
 const instructors = [
   {
@@ -36,35 +36,19 @@ const instructors = [
       Our certified black belt instructors bring decades of experience and passion to every class.
     </p>
 
-    <div class="instructor-carousel">
-      <div class="carousel-track">
-        {instructors.map((instructor, index) => (
-          <div class="instructor-slide" data-index={index}>
-            <div class="instructor-image-wrapper">
-              <img src={instructor.image} alt={instructor.name} class="instructor-image" />
-              <div class="instructor-overlay">
-                <h3 class="instructor-name">{instructor.name}</h3>
-                <p class="instructor-title">{instructor.title}</p>
-                <p class="instructor-subtitle">{instructor.subtitle}</p>
-              </div>
+    <div class="instructors-grid">
+      {instructors.map((instructor) => (
+        <div class="instructor-card">
+          <div class="instructor-image-wrapper">
+            <img src={instructor.image} alt={instructor.name} class="instructor-image" />
+            <div class="instructor-overlay">
+              <h3 class="instructor-name">{instructor.name}</h3>
+              <p class="instructor-title">{instructor.title}</p>
+              <p class="instructor-subtitle">{instructor.subtitle}</p>
             </div>
           </div>
-        ))}
-      </div>
-
-      <div class="carousel-controls">
-        <button class="carousel-btn prev" aria-label="Previous instructor">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-        <div class="carousel-dots"></div>
-        <button class="carousel-btn next" aria-label="Next instructor">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
-      </div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
@@ -81,33 +65,28 @@ const instructors = [
     font-size: 1.1rem;
   }
 
-  .instructor-carousel {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
+  .instructors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
   }
 
-  .carousel-track {
+  .instructor-card {
     position: relative;
-    overflow: hidden;
     border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform var(--transition-normal);
   }
 
-  .instructor-slide {
-    display: none;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-  }
-
-  .instructor-slide.active {
-    display: block;
-    opacity: 1;
+  .instructor-card:hover {
+    transform: translateY(-4px);
   }
 
   .instructor-image-wrapper {
     position: relative;
     width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 3/4;
     background: linear-gradient(135deg, var(--nks-charcoal) 0%, #222 100%);
     overflow: hidden;
   }
@@ -115,9 +94,8 @@ const instructors = [
   .instructor-image {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
-    opacity: 1;
   }
 
   .instructor-overlay {
@@ -130,19 +108,19 @@ const instructors = [
       to bottom,
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 0.3) 50%,
-      rgba(0, 0, 0, 0.9) 100%
+      rgba(0, 0, 0, 0.95) 100%
     );
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
     text-align: center;
-    padding: var(--space-md);
+    padding: 1.5rem 1rem;
   }
 
   .instructor-name {
     font-family: var(--font-heading);
-    font-size: 3rem;
+    font-size: 1.75rem;
     color: white;
     margin: 0 0 0.5rem;
     text-transform: uppercase;
@@ -151,137 +129,47 @@ const instructors = [
   }
 
   .instructor-title {
-    font-size: 1.25rem;
+    font-size: 0.85rem;
     color: var(--nks-red);
-    margin: 0;
+    margin: 0 0 0.25rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     font-weight: 600;
+    line-height: 1.3;
   }
 
   .instructor-subtitle {
-    font-size: 1.25rem;
+    font-size: 0.9rem;
     color: white;
     margin: 0;
-    letter-spacing: 0.1em;
-    font-weight: 600;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    opacity: 0.9;
   }
 
-  .carousel-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    margin-top: var(--space-md);
+  @media (max-width: 1024px) {
+    .instructors-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
-  .carousel-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all var(--transition-normal);
-  }
+  @media (max-width: 640px) {
+    .instructors-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin: 0 auto;
+    }
 
-  .carousel-btn:hover {
-    background: var(--nks-red);
-    border-color: var(--nks-red);
-    transform: scale(1.1);
-  }
-
-  .carousel-dots {
-    display: flex;
-    gap: 0.75rem;
-  }
-
-  .carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-    border: none;
-    padding: 0;
-  }
-
-  .carousel-dot.active {
-    background: var(--nks-red);
-    transform: scale(1.3);
-  }
-
-  @media (max-width: 768px) {
     .instructor-name {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
 
     .instructor-title {
-      font-size: 1rem;
+      font-size: 0.75rem;
     }
 
-    .carousel-btn {
-      width: 40px;
-      height: 40px;
+    .instructor-subtitle {
+      font-size: 0.85rem;
     }
   }
 </style>
-
-<script>
-  // Carousel functionality
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.instructor-slide');
-  const dotsContainer = document.querySelector('.carousel-dots');
-  const prevBtn = document.querySelector('.carousel-btn.prev');
-  const nextBtn = document.querySelector('.carousel-btn.next');
-
-  // Create dots
-  slides.forEach((_, index) => {
-    const dot = document.createElement('button');
-    dot.classList.add('carousel-dot');
-    dot.setAttribute('aria-label', `Go to instructor ${index + 1}`);
-    if (index === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => goToSlide(index));
-    dotsContainer.appendChild(dot);
-  });
-
-  const dots = document.querySelectorAll('.carousel-dot');
-
-  function updateCarousel() {
-    slides.forEach((slide, index) => {
-      slide.classList.toggle('active', index === currentSlide);
-    });
-    dots.forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentSlide);
-    });
-  }
-
-  function goToSlide(index) {
-    currentSlide = index;
-    updateCarousel();
-  }
-
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    updateCarousel();
-  }
-
-  function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    updateCarousel();
-  }
-
-  prevBtn?.addEventListener('click', prevSlide);
-  nextBtn?.addEventListener('click', nextSlide);
-
-  // Auto-rotate every 8 seconds
-  setInterval(nextSlide, 8000);
-
-  // Initialize first slide
-  updateCarousel();
-</script>
