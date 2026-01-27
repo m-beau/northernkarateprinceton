@@ -54,29 +54,38 @@ const programs = [
       Karate helps you develop your confidence, get in shape, and builds character.
     </p>
     
-    <div class="programs-grid">
-      {programs.map((program) => (
-        <div class="program-card">
-          <div class="program-header" style={`--accent-color: ${program.color}`}>
-            <span class="program-age">{program.subtitle}</span>
-            <h3 class="program-title">{program.title}</h3>
-          </div>
-          <div class="program-body">
-            <p>{program.description}</p>
-            <ul class="program-features">
-              {program.features.map((feature) => (
-                <li>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                    <path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/>
-                  </svg>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <a href="#contact" class="program-cta">Learn More →</a>
-          </div>
+    <div class="programs-container">
+      <div class="programs-image">
+        <img src="/images/colouredbelts.jpeg" alt="Karate colored belts progression" class="belts-image" />
+        <div class="image-overlay">
+          <p class="image-caption">Progress through the ranks</p>
         </div>
-      ))}
+      </div>
+
+      <div class="programs-grid">
+        {programs.map((program) => (
+          <div class="program-card">
+            <div class="program-header" style={`--accent-color: ${program.color}`}>
+              <span class="program-age">{program.subtitle}</span>
+              <h3 class="program-title">{program.title}</h3>
+            </div>
+            <div class="program-body">
+              <p>{program.description}</p>
+              <ul class="program-features">
+                {program.features.map((feature) => (
+                  <li>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/>
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <a href="#contact" class="program-cta">Learn More →</a>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
     
     <div class="programs-note">
@@ -97,11 +106,51 @@ const programs = [
     color: var(--nks-gray);
     font-size: 1.1rem;
   }
-  
+
+  .programs-container {
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
   .programs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .programs-image {
+    position: sticky;
+    top: 100px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  }
+
+  .belts-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .image-caption {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
   
   .program-card {
@@ -203,5 +252,24 @@ const programs = [
   .programs-note p {
     margin: 0;
     color: var(--nks-charcoal);
+  }
+
+  @media (max-width: 1024px) {
+    .programs-container {
+      grid-template-columns: 1fr;
+    }
+
+    .programs-image {
+      position: relative;
+      top: auto;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .programs-image {
+      max-width: 100%;
+    }
   }
 </style>

@@ -50,10 +50,7 @@ const benefits = [
       </div>
       
       <div class="about-image">
-        <!-- Placeholder for dojo image -->
-        <div class="image-placeholder">
-          <span>道場</span>
-        </div>
+        <img src="/images/blackbelts.jpeg" alt="Northern Karate Schools black belts" class="dojo-image" />
       </div>
     </div>
     
@@ -130,21 +127,15 @@ const benefits = [
   .about-image {
     position: relative;
   }
-  
-  .image-placeholder {
+
+  .dojo-image {
+    width: 100%;
+    height: auto;
     aspect-ratio: 4/3;
-    background: linear-gradient(135deg, var(--nks-charcoal) 0%, #222 100%);
+    object-fit: cover;
     border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border: 1px solid #333;
-  }
-  
-  .image-placeholder span {
-    font-size: 6rem;
-    opacity: 0.1;
-    color: white;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   }
   
   .benefits {

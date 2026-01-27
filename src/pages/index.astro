@@ -10,25 +10,12 @@ import Instructors from '../components/Instructors.astro';
 import Schedule from '../components/Schedule.astro';
 import Testimonials from '../components/Testimonials.astro';
 import Contact from '../components/Contact.astro';
-
-// Check if form was submitted
-const url = new URL(Astro.request.url);
-const submitted = url.searchParams.get('submitted');
 ---
 
 <Layout title="Northern Karate Schools Princeton | Martial Arts Classes for All Ages">
-  {submitted === 'true' && (
-    <div class="success-banner">
-      <div class="success-content">
-        <span class="success-icon">✓</span>
-        <div>
-          <strong>Thank you for your interest!</strong>
-          <p>We've received your trial class request and will contact you shortly.</p>
-        </div>
-        <button class="close-banner" onclick="this.parentElement.parentElement.remove()">×</button>
-      </div>
-    </div>
-  )}
+  <!-- Success banner container (populated by client-side JS) -->
+  <div id="success-banner-container"></div>
+
   <Hero />
   <Programs />
   <About />
@@ -38,13 +25,45 @@ const submitted = url.searchParams.get('submitted');
   <Contact />
 </Layout>
 
-<style>
+<script>
+  // Check for success parameter on page load (client-side)
+  if (typeof window !== 'undefined') {
+    const urlParams = new URLSearchParams(window.location.search);
+    const submitted = urlParams.get('submitted');
+
+    if (submitted === 'true') {
+      // Create and show success banner
+      const container = document.getElementById('success-banner-container');
+      if (container) {
+        container.innerHTML = `
+          <div class="success-banner">
+            <div class="success-content">
+              <span class="success-icon">✓</span>
+              <div>
+                <strong>Thank you for your interest!</strong>
+                <p>We've received your trial class request and will contact you shortly.</p>
+              </div>
+              <button class="close-banner" onclick="this.parentElement.parentElement.remove()">×</button>
+            </div>
+          </div>
+        `;
+
+        // Remove the query parameter from URL without page reload
+        const url = new URL(window.location.href);
+        url.searchParams.delete('submitted');
+        window.history.replaceState({}, '', url);
+      }
+    }
+  }
+</script>
+
+<style is:global>
   .success-banner {
     position: fixed;
     top: 80px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
+    z-index: 1100;
     width: 90%;
     max-width: 600px;
     animation: slideDown 0.3s ease-out;
