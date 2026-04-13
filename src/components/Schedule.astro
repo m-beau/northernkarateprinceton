@@ -29,6 +29,10 @@ const schedule = [
       Find a time that works for you.
     </p>
     
+    <div class="schedule-photo">
+      <img src="/images/IMG_1390.jpg" alt="Northern Karate Students in Class" loading="lazy" />
+    </div>
+
     <div class="schedule-grid">
       {schedule.map((day) => (
         <div class="schedule-day">
@@ -64,7 +68,23 @@ const schedule = [
     margin: 0 auto var(--space-lg);
     color: var(--nks-gray);
   }
-  
+
+  .schedule-photo {
+    margin: 0 auto var(--space-lg);
+    max-width: 900px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .schedule-photo img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+
   .schedule-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
