@@ -1,6 +1,7 @@
 ---
-// Contact section with trial signup form
-// Form action - you'll need to connect this to a backend (Formspree, Netlify Forms, etc.)
+// Contact section with free trial CTA
+// The trial button links to the external SparkPages waiver, which redirects
+// to a scheduling calendar once signed.
 ---
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -12,8 +13,9 @@
       <div class="contact-info">
         <h2>Start Your <span class="text-red">Journey</span></h2>
         <p class="contact-lead">
-          Ready to experience the NKS difference? Sign up for your free trial class and discover 
-          what martial arts can do for you and your family.
+          Ready to experience the NKS difference? Book your free trial class and discover
+          what martial arts can do for you and your family. Sign our quick online waiver
+          and you'll be able to pick your class time right away.
         </p>
         
         <div class="contact-details">
@@ -50,72 +52,51 @@
             </div>
           </div>
         </div>
-
-        <div class="map-container">
-          <div id="map" class="map"></div>
-        </div>
       </div>
-      
+
       <div class="contact-form-wrapper">
         <div class="form-header">
           <h3>Claim Your Free Trial Class</h3>
-          <p>Fill out the form below to get started</p>
+          <p>Two quick steps and you're on the mat</p>
         </div>
-        
-        <form
-          class="contact-form"
-          action="/api/contact"
-          method="POST"
-        >
-          <div class="form-row">
-            <div class="form-group">
-              <label for="firstName">First Name *</label>
-              <input type="text" id="firstName" name="firstName" required>
-            </div>
-            <div class="form-group">
-              <label for="lastName">Last Name *</label>
-              <input type="text" id="lastName" name="lastName" required>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email *</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone">
-          </div>
-          
-          <div class="form-group">
-            <label for="program">Current Level</label>
-            <select id="program" name="program">
-              <option value="">Select a level...</option>
-              <option value="full-beginner">Full beginner</option>
-              <option value="colored-belt">Colored belt (Shotokan)</option>
-              <option value="black-belt">Black belt (Shotokan Shodan+)</option>
-              <option value="different-martial-art">Different martial arts experience</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="3" placeholder="Any questions or additional information..."></textarea>
-          </div>
-          
-          <div class="form-group form-checkbox">
-            <input type="checkbox" id="privacy" name="privacy" required>
-            <label for="privacy">
-              I agree to the <a href="/privacy" target="_blank">Privacy Policy</a>
-            </label>
-          </div>
-          
-          <button type="submit" class="btn btn-primary btn-full">
-            Get Started
-          </button>
-        </form>
+
+        <div class="trial-cta">
+          <p class="trial-intro">
+            The button below takes you to our online waiver &mdash; once it's
+            signed, you'll be able to schedule your free trial class.
+          </p>
+
+          <ol class="trial-steps">
+            <li>
+              <span class="trial-step-num">1</span>
+              <div>
+                <strong>Sign the waiver</strong>
+                <p>Fill out and electronically sign our standard participation waiver.</p>
+              </div>
+            </li>
+            <li>
+              <span class="trial-step-num">2</span>
+              <div>
+                <strong>Pick your class</strong>
+                <p>You'll be redirected to our calendar to choose a day and time that works for you.</p>
+              </div>
+            </li>
+          </ol>
+
+          <a
+            href="https://sparkpages.io/forms/?frm=_N5x"
+            class="btn btn-primary btn-full"
+            target="_blank"
+            rel="noopener"
+          >
+            Sign the Waiver &amp; Book My Trial &rarr;
+          </a>
+        </div>
       </div>
+    </div>
+
+    <div class="map-container">
+      <div id="map" class="map"></div>
     </div>
   </div>
 </section>
@@ -179,7 +160,8 @@
   }
 
   .map-container {
-    margin-top: var(--space-md);
+    margin-top: var(--space-lg);
+    width: 100%;
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid #333;
@@ -188,7 +170,7 @@
 
   .map {
     width: 100%;
-    height: 300px;
+    height: 380px;
   }
 
   .contact-form-wrapper {
@@ -216,60 +198,67 @@
     font-size: 0.9rem;
   }
   
-  .contact-form {
-    padding: 1.5rem;
+  .trial-cta {
+    padding: 1.75rem 1.5rem;
     color: var(--nks-black);
   }
-  
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+
+  .trial-intro {
+    margin: 0 0 1.5rem;
+    color: var(--nks-charcoal);
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .trial-steps {
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
   }
-  
-  .form-group {
-    margin-bottom: 1rem;
+
+  .trial-steps li {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
   }
-  
-  .form-group label {
-    color: var(--nks-charcoal);
-  }
-  
-  .form-checkbox {
+
+  .trial-step-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--nks-red);
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
   }
-  
-  .form-checkbox input {
-    width: auto;
+
+  .trial-steps strong {
+    display: block;
+    color: var(--nks-black);
+    margin-bottom: 0.15rem;
   }
-  
-  .form-checkbox label {
+
+  .trial-steps p {
     margin: 0;
-    font-size: 0.85rem;
-    font-weight: 400;
+    color: var(--nks-gray);
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
-  
+
   .btn-full {
     width: 100%;
     margin-top: 0.5rem;
   }
-  
-  select {
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    padding-right: 2.5rem;
-  }
-  
+
   @media (max-width: 768px) {
     .contact-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .form-row {
       grid-template-columns: 1fr;
     }
   }
