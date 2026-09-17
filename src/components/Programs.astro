@@ -1,46 +1,59 @@
 ---
 // Programs section - showcases available martial arts programs
 // Matches NKS structure: Novice, Black Belt, Masters programs
+//
+// Each program splits its bullets in two: `features` are what you develop on
+// the mat (rendered as root items), `included` are the concrete things the
+// monthly fee pays for (rendered as an indented "Included:" sublist).
 
 const programs = [
   {
     title: "NOVICE PROGRAM",
     subtitle: "New to karate?",
     description: "Build confidence, discipline, and physical fitness. Get fit, learn practical self-defense, and join a supportive community. Beginners get and stay in shape, while enjoying a variety of benefits:",
-    features: ["Monthly assessments",
-    "Included belts + exams",
-    "Training manual and NKS crest",
-    "Motor skill development",
+    features: ["Motor skill development",
     "Discipline fundamentals",
     "Character development",
     "Stress relief",
     "Self-defense skills",
     "Cardio, Fitness, Flexibility",
     "Confidence building",
-    "Discounts for family & friends (10%)",
 ],
+    included: ["Monthly assessments",
+    "Official uniform (white) and NKS crest",
+    "Belts + exams",
+    "Training manual",
+],
+    price: "$130/month",
     color: "#3b82f6"
   },
   {
     title: "BLACK BELT PROGRAM",
     subtitle: "Black Belt Excellence.",
     description: "Progress through the ranks in a welcoming community fostering excellence. Learn, and learn to teach.",
-    features: ["Official uniform and crest",
+    features: [],
+    included: ["Monthly assessments",
+            "Official uniform (red) and NKS crest",
+            "Belts + exams",
+            "Sparring gear (gloves, shin guards, head guard)",
             "Seminars, workshops and special events featuring NKS + guest teachers",
             "Semi-private intermediate refresher classes (4/per year)",
-            "Monthly assessments",
-            "Included belts + exams",
-            "Discounts on equipment and camp tuition (15%)"],
+            "Discounts on camp tuition (15%)"],
+    price: "$144/month",
     color: "#c41230"
   },
   {
     title: "MASTERS PROGRAM",
     subtitle: "The journey is the reward.",
     description: "A black belt is just the beginning.",
-    features: ["Complete training equipment package",
-    "Semi-private advanced refresher classes (8/per year)",
-    "Black Belts + Certificates",
-    "Maximum discount on equipment and camp tuition (20%)"],
+    features: [],
+    included: ["Complete training equipment package",
+               "Official uniform (black) and NKS crest",
+               "Black Belts + Certificates",
+               "Sparring gear (gloves, shin guards, head guard) and Kobudo weapons (Bo, Sai, Tonfa)",
+               "Semi-private advanced refresher classes (8/per year)",
+               "Discount on camp tuition (20%)"],
+    price: "$144/month",
     color: "#10b981"
   }
 ];
@@ -80,8 +93,21 @@ const programs = [
                     {feature}
                   </li>
                 ))}
+                {program.included.length > 0 && (
+                  <li class="program-included">
+                    <span class="included-label">Included:</span>
+                    <ul class="program-subfeatures">
+                      {program.included.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </li>
+                )}
               </ul>
-              <a href="#contact" class="program-cta">Learn More →</a>
+              <p class="program-price">
+                <strong>{program.price}</strong> — 10% family discount for 2nd and additional family members. Three months minimum commitment.
+              </p>
+              <a href="#contact" class="program-cta">Learn More with a Trial Class→</a>
             </div>
           </div>
         ))}
@@ -226,7 +252,58 @@ const programs = [
     color: var(--nks-red);
     flex-shrink: 0;
   }
-  
+
+  /* "Included:" heads a nested list, so it stacks instead of sitting in a row */
+  .program-features li.program-included {
+    display: block;
+    margin-top: 0.85rem;
+  }
+
+  .included-label {
+    display: block;
+    font-weight: 600;
+    color: var(--nks-charcoal);
+    margin-bottom: 0.35rem;
+  }
+
+  .program-subfeatures {
+    list-style: none;
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .program-subfeatures li {
+    position: relative;
+    display: block;
+    font-size: 0.85rem;
+    color: var(--nks-gray);
+    margin-bottom: 0.35rem;
+  }
+
+  .program-subfeatures li::before {
+    content: '';
+    position: absolute;
+    left: -0.9rem;
+    top: 0.55em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--nks-red);
+    opacity: 0.55;
+  }
+
+  .program-price {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--nks-gray);
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .program-price strong {
+    color: var(--nks-charcoal);
+  }
+
   .program-cta {
     font-weight: 600;
     font-size: 0.9rem;
